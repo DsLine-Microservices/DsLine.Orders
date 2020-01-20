@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using DsLine.Core.RabbitMQ;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using RawRabbit.Instantiation;
+using System.Reflection;
 
 namespace DsLine.Orders.Services.Api
 {
@@ -18,6 +17,19 @@ namespace DsLine.Orders.Services.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+              .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+              .ConfigureContainer<ContainerBuilder>(builder =>
+              {
+
+                  
+                  builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
+                      .AsImplementedInterfaces();
+          
+                  //  builder.AddDispatchers();
+                  builder.AddRabbitMq();
+                  builder.Register(s => s.Resolve<IInstanceFactory>().Create());
+
+              })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
