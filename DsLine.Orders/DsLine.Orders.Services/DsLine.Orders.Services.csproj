@@ -5,8 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\" />
-    <Folder Include="IntegrationsMessages\" />
+    <Folder Include="Handlers\Local\" />
+    <Folder Include="Handlers\Events\" />
+    <Folder Include="IntegrationsMessages\Commands\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DsLine.Core.RabbitMQ" Version="1.0.11" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DsLine.Orders.Models.EntitiesDto\DsLine.Orders.Models.EntitiesDto.csproj" />
+    <ProjectReference Include="..\DsLine.Orders.Services.Abstractions\DsLine.Orders.Services.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

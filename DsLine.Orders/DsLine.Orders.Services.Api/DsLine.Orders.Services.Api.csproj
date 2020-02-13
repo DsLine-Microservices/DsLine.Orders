@@ -12,8 +12,16 @@
     <PackageReference Include="Consul" Version="0.7.2.6" />
     <PackageReference Include="DsLine.Core.RabbitMQ" Version="1.0.11" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DsLine.Orders.Models.EntitiesDto\DsLine.Orders.Models.EntitiesDto.csproj" />
+    <ProjectReference Include="..\DsLine.Orders.Services.Abstractions\DsLine.Orders.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\DsLine.Orders.Services\DsLine.Orders.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +29,8 @@
       <HintPath>..\..\..\DsLine.Core\DsLine.Core.RabbitMQ\bin\Release\netcoreapp3.0\DsLine.Core.RabbitMQ.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="http://json.schemastore.org/avro-avsc" /></VisualStudio></ProjectExtensions>
 
 
 </Project>
